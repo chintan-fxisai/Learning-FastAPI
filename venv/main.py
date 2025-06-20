@@ -1,4 +1,13 @@
+from os import name
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class Item(BaseModel):
+    name:str
+    price:float
+    is_active: bool = False
+
 
 app = FastAPI()
 
@@ -29,4 +38,13 @@ def product(id: int, rating: float, inStock: bool = True):
         "id": id,
         "inStock": inStock,
         "rating": rating
+    }
+
+
+@app.post('/add-item')
+def addItem(item : Item):
+    return {
+        "name": item.name,
+        "price": item.price,
+        "is_active": item.is_active
     }

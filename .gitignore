@@ -69,3 +69,4 @@ $RECYCLE.BIN/
 # Project specific
 instance/
 .webassets-cache
+venv/Libs
